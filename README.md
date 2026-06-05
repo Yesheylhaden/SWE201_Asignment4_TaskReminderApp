@@ -1,93 +1,201 @@
-# Task Reminder App - Push Notification Enabled Mobile Application
+# 📱 TaskReminderApp
 
-## App Name and Description
-- **TaskReminderApp** is a React Native mobile application built with Expo that helps users manage their daily tasks with intelligent reminder notifications. The app allows users to create tasks with due dates and receives automatic reminders before deadlines.
+> A React Native mobile app created using React Native and Expo which allows users to keep track of all of their tasks by sending notifications based on the deadlines.
 
-## Setup Instructions
-### Prerequisites
-- Node.js 
-- npm or yarn
-- Expo CLI
-- Physical iOS device 
-- Git
+---
 
-### Installation
-#### Step 1: Clone Repository
-- git clone https://github.com/choden12/Assignment_4_SWE.git
-- cd Assignment_4_SWE/TaskReminderApp
+## 📋 Table of Contents
 
-#### Step 2: Install Mobile App Dependencies
-- npm install
+- [About the App](#about-the-app)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Notification System](#notification-system)
+- [API Endpoints](#api-endpoints)
+- [Screenshots](#screenshots)
 
-#### Step 3: Install Backend Dependencies
-- cd backend
-- npm install
+---
 
-## Key Features
-- Create, complete, and delete tasks with due dates
-- Automatic local notifications 10 minutes before task deadlines
-- Optional daily reminder at 11:00 AM to review pending tasks
-- Remote push notifications via custom backend server
-- Real-time notification handling in foreground, background, and terminated states
-- Task details view when tapping on notifications
+## 🌸 About the App
 
-## Domain and Main User Scenario
+**TaskReminderApp** is a productivity application designed to solve the issue of forgetting your deadlines. This mobile app allows users to set their tasks along with their deadlines and it automatically sends reminders before their deadline ends.
 
 **Domain:** Task Management & Productivity
 
-**Primary User Scenario:** 
-A busy professional needs to remember important deadlines and daily tasks. The app helps by:
+**Primary Use Case Scenario:**
+The primary user is someone who requires assistance in remembering his or her deadlines. The app helps through the following:
 
-1. **Creating Tasks**: User adds tasks with titles, descriptions, and due dates
-2. **Automatic Reminders**: System sends notification 10 minutes before each task is due
-3. **Daily Planning**: Optional daily reminder at 8:00 PM prompts user to review next day's tasks
+1. **Task Creation** – Create a task with the name, description, and deadline.
+2. **Getting Notified** – Get notifications ten minutes before the deadline.
+3. **Planning for the Next Day** – Get daily reminders at 8:00 PM about the next day’s tasks.
 
-## Project Structure
-![FolderStructure](images/Folderstructure.png)
+---
 
-## Notification Types Implemented
+## ✨ Features
 
-### 1. Local Notifications (On-Device)
-- Uses Expo Notifications API
-- Scheduled with `scheduleNotificationAsync()`
+| Feature              | Description                                           |
+|----------------------|-------------------------------------------------------|
+| + Task Management    | Creating, completing, and deleting tasks with deadlines |
+| 🕒 Auto Reminders    | Local notification 10 minutes prior to all deadlines   |
+| 📅 Daily Reminder    | Option to receive a reminder to look at tasks         |
+| 🔔 Push Notifications| Receive remote notifications from your own server      |
+| 📲 Notification Types| Function in all states, such as foreground or terminated|
+| 🗂 Task Categories   | Task categorization into categories of work etc.       |
+| 🎯 Priority Levels   | Prioritize tasks as either high, medium or low        |
+| 📊 Progress Bar      | Task completion progress indicator                   |
 
-### 2. Remote Push Notifications (Server-Triggered)
-- Custom Express.js backend
-- Expo Push Notification Service for delivery
-- Device tokens registered and stored server-side
+---
 
-## Technology Stack
-- Runtime: Node.js
-- Framework: Express.js
-- Push Service: Expo Push 
-- Notification API
+## 🛠 Tech Stack
+
+**Mobile App**
+- React Native
+- Expo SDK 54
+- expo-notifications
+- expo-router
+- expo-dev-client
+
+**Backend Server**
+- Node.js
+- Express.js
+- Expo Push Notification Service
 - Port: 3000 (default)
 
-## Main Endpoint
-1. Post - Register device push token [/api/register-token]
-2. POST - Send to specific device [/api/send-notification]
-3. POST - Send to all registered devices [/api/broadcast]
-4. GET - List all registered tokens [/api/tokens]
+---
 
-## Output
+## Getting Started
 
-### Screenshot 1: Homepage (Main Task List)
-![Homepage](images/homepage.jpg)
-- Main dashboard showing task statistics (Total Tasks: 1, Pending: 1, Overdue: 0), daily reminder toggle, and task list with "Complete Assignment" showing 58 minutes remaining.
+### Prerequisites
 
-### Screenshot 2: Add New Task Modal
-![NewTask](images/newtask.jpg)
-- Modal dialog for creating new tasks with fields for task title, description, and due date. Date format follows YYYY-MM-DD pattern.
+Make sure you have the following installed:
+- Node.js
+- npm or yarn
+- Expo CLI
+- A physical iOS or Android device
+- Git
 
-### Screenshot 3: Daily Reminder Confirmation
-![Reminder](images/Dailyreminder.jpg)
-- Daily reminder toggle with confirmation dialog showing reminder scheduled at 11:00 AM. This demonstrates the app's recurring notification feature.
+### Step 1 — Clone the Repository
 
-### Screenshot 4: Success Message (Task Added)
-![Sucess](images/succesadd.jpg)
-- Success confirmation after adding a new task. The UI shows updated statistics (Total Tasks: 2, Pending: 2) and the newly added "Shopping" task.
+```bash
+git clone https://github.com/Yesheylhaden/SWE201_Asignment4_TaskReminderApp.git
+cd SWE201_Asignment4_TaskReminderApp/TaskReminderApp
+```
 
-### Screenshot 5: Task Detail View
-![TaskDetails](images/completeassignment.jpg)
+### Step 2 — Install Mobile App Dependencies
 
+```bash
+npm install
+```
 
+### Step 3 — Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### Step 4 — Start the Backend Server
+
+```bash
+node server.js
+```
+
+The server will run at `http://localhost:3000`
+
+### Step 5 — Start the Mobile App
+
+```bash
+cd ../TaskReminderApp
+npx expo start
+```
+
+Scan the QR code with **Expo Go** (development) or your **dev client build** (for full push notification support).
+
+---
+
+## 📁 Project Structure
+
+```
+Assignment4/
+├── TaskReminderApp/          # React Native mobile app
+│   ├── assets/               # Images and icons
+│   ├── services/
+│   │   └── notificationService.js
+│   ├── App.js                # Main app component
+│   ├── app.json              # Expo config
+│   └── package.json
+└── backend/                  # Express.js server
+    ├── server.js
+    └── package.json
+```
+
+![Folder Structure](images/Folderstructure.png)
+
+---
+
+## 🔔 Notification System
+
+### Local Notifications
+Scheduling takes place directly on the device using the Expo Notifications API with `scheduleNotificationAsync()` function. Internet connectivity is not necessary.
+
+- Alerts are triggered 10 minutes prior to deadlines of tasks
+- Daily reminder alert at 8:00 pm (optional and customizable by user)
+- A test notification can be sent from the settings page
+
+### Remote Push Notifications
+Triggered by backend application through the Expo Push Notification Service. Requires registration of the device push token.
+
+- Push token gets registered by the device at the start of the app
+- Targeted or broadcast notifications can be sent by backend 
+- Push tokens are saved on the server
+
+---
+
+## 🌐 API Endpoints
+
+| HTTP Verb | Endpoint | Explanation |
+|-----------|----------|-------------|
+| `POST`    | `/api/register-token` | Register device push token |
+| `POST`    | `/api/send-notification` | Send notification to a certain device |
+| `POST`    | `/api/broadcast` | Broadcast notifications to all devices |
+| `GET`     | `/api/tokens` | Show all registered tokens |
+
+---
+
+## 📸 Screenshots
+
+### Homepage - Tasks List
+![Homepage](images/homepage.jpeg)
+Dashboard showing task statistics (Total, Pending, Overdue, Done), progress bar, categories, priorities, and the task list.
+
+### Create a New Task
+![New Task](images/newtask.jpeg)
+Modal bottom sheet for creating tasks using the task title, description, due date, priority level, and category selection.
+
+### Enable or Disable Daily Reminder
+![Daily Reminder](images/Dailyreminder.jpeg)
+Settings screen displaying the daily reminder toggle with the notification that the reminder is set for 8:00 PM.
+
+### Task Successfully Added
+![Success](images/succesadd.jpeg)
+Screen showing success on adding a task, along with the updated statistics.
+
+### View Selected Task
+![Team Meeting](images/TeamMeeting.jpeg)
+Screen displaying detailed information about the selected task such as the due date, time left, task status, completion options, etc.
+
+---
+
+## Conclusion
+The TaskReminderApp has managed to showcase an implementation of both local and remote push notifications for a React Native mobile application developed using Expo. This app enables you to create your tasks and have automatic deadline notifications in order to organize yourself with daily notifications — powered by a minimal Express.js server.
+In addition to the push notification capability, the app also incorporates a professional UI design in pink and white, including categorization, prioritization, and progress management capabilities in order to make a comprehensive and useful productivity app.
+The experience gained throughout this project is highly practical for today's mobile applications development.
+
+---
+
+## 👩‍💻 Developer
+
+**Yesheylhaden** — SWE201 Assignment 4
+
+---
